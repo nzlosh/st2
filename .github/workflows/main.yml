@@ -19,9 +19,9 @@ jobs:
 
     services:
       mongodb:
-        container: mongo:4.0-xenial
+        image: mongo:4.0-xenial
       rabbitmq:
-        container: rabbitmq:3.6
+        image: rabbitmq:3.6
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
