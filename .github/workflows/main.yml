@@ -27,13 +27,21 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: "Unit Tests, Pack Tests (Python 3.6)"
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          ./scripts/travis/install-requirements.sh
+          sed -r "s/stanley/travis/" <conf/st2.dev.conf >"${ST2_CONF}"
+          sudo scripts/travis/add-itest-user-key.sh
+          sudo .circle/add-itest-user.sh
+          if [[ "${TASK}" = *'-packs-tests'* ]] || [[ "${TASK}" = *'-integration'* ]]; then sudo scripts/travis/permissions-workaround.sh; fi
+        env:
+          ENABLE_COVERAGE: no
+          IS_NIGHTLY_BUILD: no
+          COLUMNS: 120
+          PYLINT_CONCURRENCY: 2
+          ST2_CONF: "conf/st2.travis.conf"
+          NOSE_TIME: no
+          TASK: "compilepy3 ci-py3-unit ci-py3-packs-tests"
+          CACHE_NAME: "py3"
+          PYTHON_VERSION: "python3.6"
+          COMMAND_THRESHOLD: 750
