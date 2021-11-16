@@ -20,9 +20,12 @@ vars:
 
 tasks:
   init_task:
-    action: core.noop
+    action: packs.node_deployment
+    input:
+      packs: <% ctx(packs) %>
     next:
       - do: download_pack
+        when: <% succeeded() %>
 
   download_pack:
     action: packs.download

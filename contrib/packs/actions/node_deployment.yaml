@@ -1,0 +1,19 @@
+---
+  name: "node_deployment"
+  runner_type: "orquesta"
+  description: "A helper workflow to deploy packs to nodes participating in a St2 HA setup."
+  enabled: true
+  entry_point: "workflows/node_deployment.yaml"
+  parameters:
+    packs:
+      type: "array"
+      items:
+        type: "string"
+      required: true
+      description: "Name of the pack in Exchange or a git repo URL."
+    nodes:
+      default: "{{ config_context.get("nodes", "") }}"
+      required: true
+      immutable: true
+      description: "List of nodes in an HA deployment onto which the pack will be installed."
+      type: "string"

@@ -37,4 +37,9 @@
       required: false
       description: Action timeout in seconds. Action will get killed if it doesn't finish in timeout
       type: integer
-
+    nodes:
+      default: "{{ config_context.get("nodes", "") }}"
+      required: true
+      immutable: true
+      description: List of nodes in an HA deployment that must have the pack installed onto.
+      type: string

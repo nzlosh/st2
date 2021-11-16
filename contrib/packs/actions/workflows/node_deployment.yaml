@@ -1,0 +1,30 @@
+version: 1.0
+
+description: A helper workflow to deploy packs to nodes participating in a St2 HA setup.
+
+input:
+  - packs
+  - nodes
+
+var:
+  message: "Succeeded"
+
+tasks:
+  check_for_empty_list:
+    action: core.noop
+    next:
+      - do: install_packs_on_nodes
+        when: <% len(ctx(nodes)) > 0 %>
+
+  install_packs_on_nodes:
+    action: core.remote
+    input:
+      hosts: <% ctx(nodes) %>
+      username: root
+      cmd: /opt/stackstorm/st2/bin/st2-pack-install <% ctx(packs).join(" ") %>
+    next:
+      - publish:
+        - message: <% result().items().select([$.first(), switch($[1].return_code > 0 => "Failed", $[1].return_code = 0 => "Succeeded")]) %>
+
+output:
+  - message: <% ctx(message) %>

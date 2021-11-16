@@ -21,3 +21,8 @@
       Comma separated list of domain elements or IP address elements to skip HTTP proxying for.
     required: false
     default: "localhost, 127.0.0.1"
+  nodes:
+    description: A list of nodes that are part of an HA installation to manually install the pack on.
+    type: string
+    default: ""
+    required: false
