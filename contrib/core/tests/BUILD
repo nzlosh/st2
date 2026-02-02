@@ -1,5 +1,10 @@
 # tests can only be dependencies of other tests in this directory
-__dependents_rules__(("*", "/**", "!*"))
+__dependents_rules__(("*", "/**", f"//{build_file_dir().parent}:files", "!*"))
+
+__defaults__(
+    {python_test: dict(tags=["pack"])},
+    extend=True,
+)
 
 python_tests(
     skip_pylint=True,
@@ -11,6 +16,7 @@ python_tests(
                 # Use contrib/core as the canonical copy.
                 "contrib/core:reqs#mail-parser",
             ],
+            uses=["mongo"],
         ),
     },
 )

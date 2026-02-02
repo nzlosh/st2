@@ -45,6 +45,7 @@ Being part of Technical Steering Committee (TSC) [@StackStorm/maintainers](https
   - Ansible, Docker, K8s, StackStorm Exchange. [StackStorm Adoption](https://github.com/StackStorm/st2/pull/5836)
 * Mick McGrath ([@mickmcgrath13](https://github.com/mickmcgrath13)), _Bitovi_ <<mick@bitovi.com>>
   - Systems, ST2 Exchange. [Case Study](https://stackstorm.com/case-study-bitovi/).
+* Jake Z ([@skiedude](https://github.com/skiedude)) - _Adobe_ - ChatOps, K8s, CI.
 
 --------
 
