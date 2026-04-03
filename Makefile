@@ -662,6 +662,7 @@ distclean: clean
 .PHONY: .requirements
 .requirements: virtualenv
 	$(VIRTUALENV_DIR)/bin/python -m pip install --upgrade "pip==$(PIP_VERSION)"
+	$(VIRTUALENV_DIR)/bin/python -m pip install --upgrade "setuptools==$(SETUPTOOLS_VERSION)"  # workaround for pbr issue
 	# Print out pip version
 	$(VIRTUALENV_DIR)/bin/pip --version
 	# Generate all requirements to support current CI pipeline.
