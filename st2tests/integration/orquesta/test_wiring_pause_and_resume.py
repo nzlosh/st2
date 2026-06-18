@@ -310,7 +310,7 @@ class PauseResumeWiringTest(
         ex = self._wait_for_state(ex, ac_const.LIVEACTION_STATUS_RUNNING)
         tk1_ac_ex = self._wait_for_state(
             tk1_ac_ex,
-            [ac_const.LIVEACTION_STATUS_PAUSING, ac_const.LIVEACTION_STATUS_PAUSING],
+            [ac_const.LIVEACTION_STATUS_PAUSING, ac_const.LIVEACTION_STATUS_PAUSED],
         )
         tk2_ac_ex = self._wait_for_state(tk2_exs[0], ac_const.LIVEACTION_STATUS_RUNNING)
 
