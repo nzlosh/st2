@@ -159,7 +159,7 @@ class PauseResumeWiringTest(
 
         # Check the workflow and subworkflow status.
         tk1_ac_ex = self._wait_for_state(tk1_ac_ex, ac_const.LIVEACTION_STATUS_PAUSED)
-        tk1_ac_ex = self._wait_for_state(
+        tk2_ac_ex = self._wait_for_state(
             tk2_ac_ex,
             [ac_const.LIVEACTION_STATUS_PAUSING, ac_const.LIVEACTION_STATUS_PAUSED],
         )
@@ -173,7 +173,7 @@ class PauseResumeWiringTest(
 
         # Check the workflow and subworkflow status.
         tk1_ac_ex = self._wait_for_state(tk1_ac_ex, ac_const.LIVEACTION_STATUS_PAUSED)
-        tk1_ac_ex = self._wait_for_state(tk2_ac_ex, ac_const.LIVEACTION_STATUS_PAUSED)
+        tk2_ac_ex = self._wait_for_state(tk2_ac_ex, ac_const.LIVEACTION_STATUS_PAUSED)
         ex = self._wait_for_state(ex, ac_const.LIVEACTION_STATUS_PAUSED)
 
         # Resume the parent ex.
