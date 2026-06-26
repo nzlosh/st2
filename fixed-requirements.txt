@@ -25,10 +25,14 @@ importlib_metadata==9.0.0
 jsonpath-rw==1.4.0
 # Using jsonschema>=4.18.0 requires refactoring/debugging use of $ref.
 #jsonschema==4.17.3
-jsonschema==4.26.0
+# jsonschema 4.26.0 requires Python>=3.10, which breaks el9 (Python 3.9). 4.25.1 is the last >=3.8-compatible release.
+jsonschema==4.25.1
 # openapi-spec-validator pinned to align with st2's jsonschema pinning constraint
 #openapi-spec-validator==0.5.7
 openapi-spec-validator==0.7.2
+# pin referencing to <0.37.0; jsonschema-path 0.3.4 (via openapi-spec-validator 0.7.2) requires this upper bound.
+# Remove when openapi-spec-validator is upgraded to >=0.8.x (which uses jsonschema-path>=0.4.x allowing referencing>=0.37.0).
+referencing==0.36.2
 kombu==5.5.4
 lockfile==0.12.2
 mongoengine==0.29.1
