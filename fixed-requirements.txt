@@ -11,7 +11,6 @@ apscheduler==3.11.0
 chardet==5.2.0
 cffi==1.17.1
 cryptography==43.0.3
-eventlet==0.39.1
 # Note: installs gitpython==3.1.37 (security fixed) under py3.8 and gitpython==3.1.18 (latest available, vulnerable) under py3.6
 gitpython==3.1.45
 # Needed by gitpython, old versions used to bundle it
@@ -19,7 +18,7 @@ gitdb==4.0.12
 # Note: greenlet is used by eventlet
 greenlet==3.1.1
 # Gunicorn dropped eventlet support as of v26. https://gunicorn.org/news/#2600-2026-05-05
-gunicorn<26
+gunicorn<25
 # importlib backport replaces setuptool's pkg_resource.
 importlib_resources==6.5.2
 importlib_metadata==9.0.0
@@ -75,7 +74,7 @@ stevedore==5.3.0
 tenacity==9.0.0
 tooz==6.3.0
 # Note: virtualenv embeds wheels for pip, and setuptools. https://github.com/pypa/virtualenv/src/virtualenv/seed/wheels/embed
-# virtualenv==21.5.1 embeds pip==26.1.2 setuptools==82.0.1
+# virtualenv==21.6.0 embeds pip==26.1.2 setuptools==82.0.1
 # lockfiles/st2.lock has pip==25.0.1 wheel==0.45.1 setuptools==75.3.2
 pip==26.1.2
 setuptools==82.0.1
@@ -93,3 +92,4 @@ python-statsd==2.1.0
 orjson==3.10.15
 zipp==3.20.2
 pynacl==1.6.0
+referencing<0.37.0
